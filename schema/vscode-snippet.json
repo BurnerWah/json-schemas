@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft-04/schema#",
+  "title": "Schema for VSCode Snippets",
+  "definitions": {
+    "snippetDefiniton": {
+      "type": "object",
+      "properties": {
+        "prefix": {
+          "description": "Text which should trigger a snippet",
+          "oneOf": [
+            { "type": "string" },
+            { "type": "array", "minItems": 1, "items": { "type": "string" } }
+          ]
+        },
+        "body": {
+          "description": "Snippet body",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": {
+          "description": "Description for intellisense or language server to provide",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "type": "object",
+  "oneOf": [{ "$ref": "#/definitions/snippetDefinition" }]
+}
